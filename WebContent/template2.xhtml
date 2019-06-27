@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="template.css" />
+</h:head>
+
+<h:body>
+
+	<div class="wrapper">
+		<nav>
+			<ul>
+
+				<li><img src="logo.png" /></li>
+
+
+				<li><a href="#"></a>HOME</li>
+				<li><a href="#"></a>HOME</li>
+				<li><a href="#"></a>HOME</li>
+				<li><a href="#"></a>HOME</li>
+
+
+				<li><h:form>
+
+						<li><h:form>
+								<h:commandLink value="Logar"
+									action="#{templateController.redirecionar('/GiroBike/faces/login.xhtml')}" />
+							</h:form></li>
+
+						<h:commandLink value="Consulta Usuario"
+							action="#{templateController.redirecionar('/GiroBike/faces/pages/consultausuario.xhtml')}" />
+					</h:form></li>
+				<li><h:form>
+						<h:outputLabel
+							value="Olá #{templateController.usuarioLogado.nome}" />
+					</h:form></li>
+				<li><h:form>
+						<h:commandLink value=" (Sair)"
+							action="#{templateController.encerrarSessao}" style="color:white" />
+					</h:form></li>
+			</ul>
+		</nav>
+	</div>
+</h:body>
+
+</html>

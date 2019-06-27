@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="template.css" />
+</h:head>
+
+<h:body>
+
+	<div class="wrapper">
+		<nav>
+			<ul>
+
+				<li><img src="logo.png" /></li>
+
+
+				<li><h:form>
+						<h:commandLink value="Cadastrar Bike"
+							action="#{templateController.redirecionar('/GiroBike/faces/pages/bike.xhtml')}" />
+					</h:form></li>
+
+				<li><h:form>
+						<h:commandLink value="Cadastrar Usuário"
+							action="#{templateController.redirecionar('/GiroBike/faces/pages/usuario.xhtml')}" />
+					</h:form></li>
+
+				<li><h:form>
+						<h:commandLink value="Cadastrar Produto"
+							action="#{templateController.redirecionar('/GiroBike/faces/pages/produto.xhtml')}" />
+					</h:form></li>
+
+				<li><h:form>
+						<h:commandLink value="Realizar Venda"
+							action="#{templateController.redirecionar('/GiroBike/faces/pages/vendaproduto.xhtml')}" />
+					</h:form></li>
+
+				<li><h:form>
+						<h:commandLink
+							value="Carrinho (#{templateController.qtdItensCarrinho})"
+							action="#{templateController.redirecionar('/GiroBike/faces/pages/carrinho.xhtml')}" />
+					</h:form></li>
+				<li><h:form>
+
+						<h:commandLink value="Histórico de Venda"
+							action="#{templateController.redirecionar('/GiroBike/faces/pages/historico.xhtml')}" />
+					</h:form></li>
+
+
+				<li><h:form>
+						<h:commandLink value="Fazer Login"
+							action="#{templateController.redirecionar('/GiroBike/faces/login.xhtml')}" />
+					</h:form></li>
+				<li><h:form>
+						<h:commandLink value="Consultar Usuário"
+							action="#{templateController.redirecionar('/GiroBike/faces/pages/consultausuario.xhtml')}" />
+					</h:form></li>
+				<li><h:form class="label">
+						<h:outputLabel
+							value="Olá #{templateController.usuarioLogado.nome}" />
+					</h:form></li>
+				<li><h:form>
+						<h:commandLink value="Sair"
+							action="#{templateController.encerrarSessao}" style="color:white" />
+					</h:form></li>
+			</ul>
+		</nav>
+	</div>
+	<div class="box content">
+		<br />
+		<ui:insert name="conteudo">
+
+			<div class="page-header ">
+				<h4>
+					<strong> Carrinho <span class="label label-warning">0</span>
+						Eventos disponibles
+					</strong> <a class="btn btn-primary pull-right"
+						href="{% url 'events_app:nuevo' %}"> <span
+						class="glyphicon glyphicon-plus"></span> Crear un evento nuevo
+					</a>
+				</h4>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th colspan="2">Nombre del evento</th>
+								<th>Categoría</th>
+								<th>Inicio</th>
+								<th>Fin</th>
+								<th>Monto</th>
+								<th class="text-center">Acciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><img src="" alt="" width="60" class="img-rounded" /></td>
+								<td>name</td>
+								<td>category</td>
+								<td>start</td>
+								<td>finish</td>
+								<td><span class="label label-default">Gratuito</span> <span
+									class="label label-info">S/. 0.00</span></td>
+								<td class="text-right"><a href="#" class="btn btn-success"><span
+										class="glyphicon glyphicon-eye-open"></span></a> <a href="#"
+									class="btn btn-warning"><span
+										class="glyphicon glyphicon-pencil"></span></a> <a href=""
+									class="btn btn-danger"><span
+										class="glyphicon glyphicon-trash"></span></a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</ui:insert>
+	</div>
+</h:body>
+</html>

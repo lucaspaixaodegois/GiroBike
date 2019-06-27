@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:outputStylesheet library="css" name="styleLogin.css" />
+<h:outputStylesheet library="imagens" name="perfil_avatar.png" />
+
+<h:head>
+	<title>Logar no sistema</title>
+</h:head>
+<h:body>
+
+<div id="fundologin"></div>
+	<h:form class="box" action="login.xhtml" method="post"	>
+	
+	
+		<h:outputLabel value="Login: " />
+		<h:inputText placeholder="Usuário" 
+			value="#{loginController.usuario.login}" />
+
+		<h:outputLabel value="Senha: " />
+		<h:inputSecret placeholder="Senha"
+			value="#{loginController.usuario.senha}" />
+
+		<center><h:panelGrid  columns="2">
+
+			<h:commandButton value="Entrar" action="#{loginController.entrar}" />
+
+			<h:commandButton value="Limpar" action="#{loginController.limpar}" />
+		
+			<h:messages style="color:red" />
+
+		</h:panelGrid></center>
+	</h:form>
+
+</h:body>
+</html>

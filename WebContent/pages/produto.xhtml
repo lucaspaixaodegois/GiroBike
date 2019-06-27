@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<ui:composition template="../template.xhtml">
+	<ui:define name="conteudo">
+		<div class="container">
+
+			<div class="navbar navbar-inverse">
+				<h:messages style="color:red" />
+				<h:messages id="messages" style="color:red" globalOnly="false" />
+				<div class="navbar-brand" style="width: 100%; text-align: center;">Cadastro
+					de Peça</div>
+			</div>
+
+			<div class="row" align="center">
+				<div class="col-xs-12 col-xs-updated">
+					<h:form styleClass="form-horizontal">
+
+						<h:messages id="messages" style="color:red" globalOnly="false" />
+						<h:message for="itNome" style="color:red" />
+						<h:panelGrid columns="2">
+							<h:outputLabel value="Descrição:" styleClass="control-label" />
+							<h:inputText id="itNome"
+								value="#{produtoController.produto.descricao}"
+								styleClass="form-control" />
+
+
+							<h:outputLabel value="Valor:" styleClass="control-label" />
+							<h:inputText id="itLogin"
+								value="#{produtoController.produto.valor}"
+								styleClass="form-control">
+								<f:convertNumber locale="pt_BR" pattern="###0.00" />
+							</h:inputText>
+							<h:message for="itLogin	" style="color:red" />
+
+						</h:panelGrid>
+						<br />
+						<br />
+
+						<h:panelGrid columns="4">
+
+							<h:commandButton value="Incluir"
+								disabled="#{produtoController.produto.id != null}"
+								actionListener="#{produtoController.incluir}"
+								styleClass="btn btn-success">
+								<f:ajax execute="@form" render="@form formDataTable" />
+							</h:commandButton>
+
+
+							<h:commandButton value="Alterar"
+								disabled="#{produtoController.produto.id == null}"
+								actionListener="#{produtoController.alterar}"
+								styleClass="btn btn-primary">
+								<f:ajax execute="@form" render="@form formDataTable" />
+							</h:commandButton>
+
+							<h:commandButton value="Excluir"
+								disabled="#{produtoController.produto.id == null}"
+								actionListener="#{produtoController.excluir}"
+								class="btn btn-danger">
+								<f:ajax render="@form formDataTable" />
+							</h:commandButton>
+							<h:commandButton value="Limpar"
+								actionListener="#{produtoController.limpar}"
+								class="btn btn-warning">
+								<f:ajax execute="@this" render="@all" />
+							</h:commandButton>
+
+						</h:panelGrid>
+					</h:form>
+
+					<h:form id="formDataTable" styleClass="form-horizontal">
+						<div class="md-3">
+
+							<h:dataTable value="#{produtoController.listaProduto}" var="obj"
+								styleClass="table table-striped table-hover">
+								<h:column>
+									<f:facet name="header">Id</f:facet>
+									<h:outputLabel value="#{obj.id}" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">Descrição</f:facet>
+									<h:commandLink value="#{obj.descricao}"
+										actionListener="#{produtoController.editar(obj.id)}" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">Valor</f:facet>
+									<h:outputLabel value="#{obj.valor}"
+										actionListener="#{produtoController.editar(obj.id)}">
+										<f:convertNumber locale="pt_BR" currencySymbol="R$"
+											type="currency" />
+									</h:outputLabel>
+								</h:column>
+
+							</h:dataTable>
+						</div>
+					</h:form>
+
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

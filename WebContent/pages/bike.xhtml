@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<ui:composition template="../template.xhtml">
+	<ui:define name="conteudo">
+		<div class="container">
+
+			<div class="navbar navbar-inverse">
+				<h:messages style="color:red" />
+				<h:messages id="messages" style="color:red" globalOnly="false" />
+				<div class="navbar-brand" style="width: 100%; text-align: center;">Cadastro
+					de Bike</div>
+			</div>
+
+			<div class="row" align="center">
+				<div class="col-xs-12 col-xs-updated">
+					<h:form styleClass="form-horizontal">
+
+						<br />
+						<br />
+
+						<h:form>
+							<h:panelGrid id="panelForm" columns="2">
+
+								<h:outputLabel value="Tamanho Aro: " />
+								<h:selectOneMenu styleClass="form-control"
+									value="#{bikeController.bike.tamanhoAro}">
+									<f:selectItem itemLabel="Selecione ..." />
+									<f:selectItems value="#{bikeController.listaTamanhoAro}"
+										var="tamanhoAro" itemLabel="#{tamanhoAro.label}"
+										itemValue="#{tamanhoAro}" />
+								</h:selectOneMenu>
+
+								<h:outputLabel value="Modelo: " />
+								<h:selectOneMenu styleClass="form-control"
+									value="#{bikeController.bike.modelo}">
+									<f:selectItem itemLabel="Selecione ..." />
+									<f:selectItems value="#{bikeController.listaModelo}"
+										var="modelo" itemLabel="#{modelo.label}" itemValue="#{modelo}" />
+								</h:selectOneMenu>
+
+								<h:outputLabel value="Marca: " />
+								<h:selectOneMenu styleClass="form-control"
+									value="#{bikeController.bike.marca}">
+									<f:selectItem itemLabel="Selecione ..." />
+									<f:selectItems value="#{bikeController.listaMarca}" var="marca"
+										itemLabel="#{marca.label}" itemValue="#{marca}" />
+								</h:selectOneMenu>
+
+								<h:outputLabel value="Categoria: " />
+								<h:selectOneMenu styleClass="form-control"
+									value="#{bikeController.bike.categoria}">
+									<f:selectItem itemLabel="Selecione ..." />
+									<f:selectItems value="#{bikeController.listaCategoria}"
+										var="categoria" itemLabel="#{categoria.label}"
+										itemValue="#{categoria}" />
+								</h:selectOneMenu>
+
+							</h:panelGrid>
+							<br />
+							<br />
+
+							<h:panelGrid columns="4">
+								<h:commandButton styleClass="btn btn-success"
+									value="Incluir" disabled="#{bikeController.bike.id != null}"
+									actionListener="#{bikeController.incluir}" />
+
+								<h:commandButton styleClass="btn btn-primary"
+									value="Alterar" disabled="#{bikeController.bike.id == null}"
+									actionListener="#{bikeController.alterar}" />
+
+								<h:commandButton class="btn btn-danger" value="Excluir"
+									disabled="#{bikeController.bike.id == null}"
+									actionListener="#{bikeController.excluir}" />
+
+								<h:commandButton class="btn btn-warning" value="Limpar"
+									actionListener="#{bikeController.limpar}" />
+							</h:panelGrid>
+						</h:form>
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+
+</html>

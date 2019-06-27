@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="template.css" />
+</h:head>
+
+<h:body>
+
+	<div class="wrapper">
+		<nav>
+			<ul>
+
+				<li><img src="logo.png" /></li>
+
+
+				<li><h:form>
+						<h:commandLink value="Cadastrar Bike"
+							action="#{templateController.redirecionar('/GiroBike/faces/pages/bike.xhtml')}" />
+					</h:form></li>
+
+				<li><h:form>
+						<h:commandLink value="Cadastrar Usuário"
+							action="#{templateController.redirecionar('/GiroBike/faces/pages/usuario.xhtml')}" />
+					</h:form></li>
+
+				<li><h:form>
+						<h:commandLink value="Cadastrar Peça"
+							action="#{templateController.redirecionar('/GiroBike/faces/pages/produto.xhtml')}" />
+					</h:form></li>
+
+				<li><h:form>
+						<h:commandLink value="Realizar Venda"
+							action="#{templateController.redirecionar('/GiroBike/faces/pages/vendaproduto.xhtml')}" />
+					</h:form></li>
+
+				<li><h:form>
+						<h:commandLink
+							value="Carrinho (#{templateController.qtdItensCarrinho})"
+							action="#{templateController.redirecionar('/GiroBike/faces/pages/carrinho.xhtml')}" />
+					</h:form></li>
+				<li><h:form>
+
+						<h:commandLink value="Histórico de Venda"
+							action="#{templateController.redirecionar('/GiroBike/faces/pages/historico.xhtml')}" />
+					</h:form></li>
+
+				<li><h:form>
+						<h:commandLink value="Fazer Login"
+							action="#{templateController.redirecionar('/GiroBike/faces/login.xhtml')}" />
+					</h:form></li>
+
+
+
+				<li><h:form>
+
+						<h:commandLink value="Consultar Usuário"
+							action="#{templateController.redirecionar('/GiroBike/faces/pages/consultausuario.xhtml')}" />
+					</h:form></li>
+				<li><h:form class="label">
+						<h:outputLabel
+							value="Olá #{templateController.usuarioLogado.nome}" />
+					</h:form></li>
+
+
+
+				<li><h:form>
+						<h:commandLink value="Sair"
+							action="#{templateController.encerrarSessao}" style="color:white" />
+					</h:form></li>
+			</ul>
+		</nav>
+	</div>
+	<div class="box content">
+		<br />
+		<ui:insert name="conteudo">
+			<img src="perfil_capa.png" />
+		</ui:insert>
+	</div>
+
+</h:body>
+</html>

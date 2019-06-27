@@ -1,0 +1,63 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	background: #ff8000;
+}
+
+.body fudologin {
+	width: 400px;
+	height: 300px;
+	background: #ff8000;
+}
+
+.box {
+	width: 300px;
+	padding: 40px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #ffffff;
+	text-align: left;
+	border-radius: 30px;
+}
+
+.box output[type="label"] {
+	text-align: center;
+	font-size: 15px;
+}
+
+.box input[type="text"], .box input[type="password"] {
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid #ff8000;
+	padding: 14px 10px;
+	width: 200px;
+	outline: none;
+	color: black;
+	border-radius: 24px;
+	transition: 0.25s;
+}
+
+.box input[type="text"]:focus, .box input[type=password]:focus {
+	width: 280px;
+	border-color: #2ecc72;
+}
+
+.box input[type="submit"], .box input[type="clear"] {
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid #2ecc72;
+	padding: 14px 10px;
+	border-radius: 24px;
+	transition: 0.25s;
+	cursor: pointer;
+	text-align: center;
+}
