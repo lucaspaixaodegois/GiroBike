@@ -46,13 +46,17 @@
 					</h:column>
 
 					<h:column>
-						<f:facet name="header">Ação</f:facet>
+						<f:facet name="header">Ações</f:facet>
 						<h:commandButton class="btn btn-success"
 							value="Adicionar Carrinho"
 							actionListener="#{vendaProdutoController.adicionar(obj.id)}">
 							<f:ajax render="@all" execute="@this" />
 						</h:commandButton>
-			
+						<h:commandButton class="btn btn-danger" value="remover"
+							actionListener="#{carrinhoController.remover(obj)}">
+							<f:ajax render="@form" execute="@this" />
+							
+						</h:commandButton>
 					</h:column>
 
 				</h:dataTable>

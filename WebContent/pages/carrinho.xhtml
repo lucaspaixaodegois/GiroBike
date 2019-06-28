@@ -33,19 +33,16 @@
 						<h:commandButton class="btn btn-danger" value="remover"
 							actionListener="#{carrinhoController.remover(obj)}">
 							<f:ajax render="@all" execute="@this" />
-
-							<f:ajax render="@form" execute="@this" />
 						</h:commandButton>
 					</h:column>
 
 				</h:dataTable>
 				<h:outputLabel value="Informe o nome do Cliente: " />
 				<h:inputText styleClass="control-label"
-					value="" />
-					
+					value="#{carrinhoController.nomeCliente}"/>
+
 				<h:commandButton class="btn btn-success" value="Finalizar Venda"
 					actionListener="#{carrinhoController.finalizar}">
-					<f:ajax execute="@form" render="@form" />
 				</h:commandButton>
 
 				<h:messages style="color:red" />

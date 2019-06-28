@@ -16,15 +16,15 @@ import br.unitins.girobike.model.TamanhoAro;
 
 @Named
 @ViewScoped
-public class BikeController implements Serializable{
+public class BikeController implements Serializable {
 
 	private static final long serialVersionUID = 2602034636682098082L;
-	
+
 	private Bike bike;
-	
+
 	private List<Bike> listaBike = null;
-	
-	public List<Bike> getListaBike(){
+
+	public List<Bike> getListaBike() {
 		if (listaBike == null) {
 			BikeDAO dao = new BikeDAO();
 			listaBike = dao.findAll();
@@ -32,16 +32,15 @@ public class BikeController implements Serializable{
 				listaBike = new ArrayList<Bike>();
 			dao.closeConnection();
 		}
-		
+
 		return listaBike;
 	}
-	
+
 	public void editar(int id) {
 		BikeDAO dao = new BikeDAO();
 		setBike(dao.findById(id));
 	}
-	
-	
+
 	public void incluir() {
 		BikeDAO dao = new BikeDAO();
 
@@ -52,7 +51,7 @@ public class BikeController implements Serializable{
 		}
 		dao.closeConnection();
 	}
-	
+
 	public void alterar() {
 		BikeDAO dao = new BikeDAO();
 		if (dao.update(getBike())) {
@@ -62,7 +61,7 @@ public class BikeController implements Serializable{
 		}
 		dao.closeConnection();
 	}
-	
+
 	public void excluir() {
 		BikeDAO dao = new BikeDAO();
 		if (dao.delete(getBike().getId())) {
@@ -72,34 +71,38 @@ public class BikeController implements Serializable{
 		}
 		dao.closeConnection();
 	}
+
 	public TamanhoAro[] getListaTamanhoAro() {
 		return TamanhoAro.values();
 	}
+
 	public Marca[] getListaMarca() {
 		return Marca.values();
 	}
+
 	public Modelo[] getListaModelo() {
 		return Modelo.values();
 	}
+
 	public Categoria[] getListaCategoria() {
 		return Categoria.values();
 	}
 	
+
 	public void limpar() {
 		bike = null;
 	}
-	
 
 	public Bike getBike() {
 		if (bike == null) {
 			bike = new Bike();
 		}
-		
+
 		return bike;
 	}
 
 	public void setBike(Bike bike) {
 		this.bike = bike;
 	}
-	
+
 }

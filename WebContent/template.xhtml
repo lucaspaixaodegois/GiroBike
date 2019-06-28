@@ -18,15 +18,14 @@
 
 				<li><img src="logo.png" /></li>
 
+				<li><h:form>
+						<h:commandLink value="Inicio"
+							action="#{templateController.redirecionar('/GiroBike/faces/template.xhtml')}" />
+					</h:form></li>
 
 				<li><h:form>
 						<h:commandLink value="Cadastrar Bike"
 							action="#{templateController.redirecionar('/GiroBike/faces/pages/bike.xhtml')}" />
-					</h:form></li>
-
-				<li><h:form>
-						<h:commandLink value="Cadastrar Usuário"
-							action="#{templateController.redirecionar('/GiroBike/faces/pages/usuario.xhtml')}" />
 					</h:form></li>
 
 				<li><h:form>
@@ -49,13 +48,6 @@
 						<h:commandLink value="Histórico de Venda"
 							action="#{templateController.redirecionar('/GiroBike/faces/pages/historico.xhtml')}" />
 					</h:form></li>
-
-				<li><h:form>
-						<h:commandLink value="Fazer Login"
-							action="#{templateController.redirecionar('/GiroBike/faces/login.xhtml')}" />
-					</h:form></li>
-
-
 
 				<li><h:form>
 

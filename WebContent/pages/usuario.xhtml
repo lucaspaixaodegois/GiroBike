@@ -87,7 +87,11 @@
 									actionListener="#{usuarioController.limpar}">
 									<f:ajax execute="@this" render="@all" />
 								</h:commandButton>
+								
 							</h:panelGrid>
+							<br/>
+							<h:commandButton value="Voltar" onclick="history.go(-1); return false;" 
+									styleClass="col-md-2 mb-3 btn btn-default form-control" />
 						</h:form>
 					</h:form>
 				</div>

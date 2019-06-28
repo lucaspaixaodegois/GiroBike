@@ -11,6 +11,7 @@ import br.unitins.girobike.model.Bike;
 import br.unitins.girobike.model.Categoria;
 import br.unitins.girobike.model.Marca;
 import br.unitins.girobike.model.Modelo;
+import br.unitins.girobike.model.TamanhoAro;
 
 public class BikeDAO extends DAO<Bike>  {
 	
@@ -27,19 +28,28 @@ public class BikeDAO extends DAO<Bike>  {
 		PreparedStatement stat = null;
 		try {
 			stat =	getConnection().prepareStatement("INSERT INTO bike ( "
-										+ "  tamAro, "
+										+ "  tamanhoaro, "
 										+ "  categoria, "
 										+ "  modelo, "
+										+ "  cpf, "
+										+ "  nome, "
+										+ "  email, "
 										+ "  marca ) " 
 										+ "VALUES ( "
 										+ " ?, "
 										+ " ?, "
 										+ " ?, "
+										+ " ?, "
+										+ " ?, "
+										+ " ?, "
 										+ " ? ) ");
-			stat.setInt(1, obj.getTamanhoAro());
+			stat.setInt(1, obj.getTamanhoAro().getValue());
 			stat.setInt(2, obj.getCategoria().getValue());
 			stat.setInt(3, obj.getModelo().getValue());
-			stat.setInt(4, obj.getMarca().getValue());
+			stat.setString(4, obj.getCpf());
+			stat.setString(5, obj.getNome());
+			stat.setString(6, obj.getEmail());
+			stat.setInt(7, obj.getMarca().getValue());
 			
 			stat.execute();
 			Util.addMessageError("Cadastro realizado com sucesso!");
@@ -70,16 +80,22 @@ public class BikeDAO extends DAO<Bike>  {
 		PreparedStatement stat = null;
 		try {
 			stat =	getConnection().prepareStatement("UPDATE bike SET "
-												   + "  tamAro = ?, "
+												   + "  tamanhoaro = ?, "
 												   + "  categoria = ?, "
 												   + "  modelo = ?, "
+												   + "  cpf = ?, "
+												   + "  nome = ?, "
+												   + "  email = ?, "
 												   + "  marca = ?  " 
 												   + "WHERE id = ? ");
-			stat.setInt(1, obj.getTamanhoAro());
+			stat.setInt(1, obj.getTamanhoAro().getValue());
 			stat.setInt(2, obj.getCategoria().getValue());
 			stat.setInt(3, obj.getModelo().getValue());
-			stat.setInt(4, obj.getMarca().getValue());
-			stat.setInt(5, obj.getId());
+			stat.setString(4, obj.getCpf());
+			stat.setString(5, obj.getNome());
+			stat.setString(6, obj.getEmail());
+			stat.setInt(7, obj.getMarca().getValue());
+			stat.setInt(8, obj.getId());
 			
 			stat.execute();
 			Util.addMessageError("Alteração realizada com sucesso!");
@@ -148,10 +164,15 @@ public class BikeDAO extends DAO<Bike>  {
 			if(rs.next()) {
 				bike = new Bike();
 				bike.setId(rs.getInt("id"));
-				bike.setTamanhoAro(rs.getInt("tamanhoAro"));
+				bike.setTamanhoAro(TamanhoAro.valueOf("tamanhoaro"));
 				bike.setModelo(Modelo.valueOf(rs.getInt("modelo")));
 				bike.setCategoria(Categoria.valueOf(rs.getInt("categoria")));
 				bike.setMarca(Marca.valueOf(rs.getInt("marca")));
+				bike.setCpf(rs.getString("cpf"));
+				bike.setNome(rs.getString("nome"));
+				bike.setEmail(rs.getString("email"));
+				
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -184,10 +205,13 @@ public class BikeDAO extends DAO<Bike>  {
 			while(rs.next()) {
 				Bike c = new Bike();
 				c.setId(rs.getInt("id"));
-				c.setTamanhoAro(rs.getInt("tamanhoAro"));
+				c.setTamanhoAro(TamanhoAro.valueOf("tamanhoaro"));
 				c.setModelo(Modelo.valueOf(rs.getInt("modelo")));
 				c.setCategoria(Categoria.valueOf(rs.getInt("categoria")));
 				c.setMarca(Marca.valueOf(rs.getInt("marca")));
+				c.setCpf(rs.getString("cpf"));
+				c.setNome(rs.getString("nome"));
+				c.setEmail(rs.getString("email"));
 
 				listaBike.add(c);
 			}

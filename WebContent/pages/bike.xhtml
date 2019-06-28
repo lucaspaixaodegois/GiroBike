@@ -59,17 +59,31 @@
 										itemValue="#{categoria}" />
 								</h:selectOneMenu>
 
+								<h:outputLabel value="Nome: " />
+								<h:inputText styleClass="form-control"
+									value="#{bikeController.bike.nome}" />
+
+								<h:outputLabel value="CPF: " />
+								<h:inputText styleClass="form-control"
+									value="#{bikeController.bike.cpf}" />
+
+								<h:outputLabel value="Email: " />
+								<h:inputText styleClass="form-control"
+									value="#{bikeController.bike.email}" />
+
+
+
 							</h:panelGrid>
 							<br />
 							<br />
 
 							<h:panelGrid columns="4">
-								<h:commandButton styleClass="btn btn-success"
-									value="Incluir" disabled="#{bikeController.bike.id != null}"
+								<h:commandButton styleClass="btn btn-success" value="Incluir"
+									disabled="#{bikeController.bike.id != null}"
 									actionListener="#{bikeController.incluir}" />
 
-								<h:commandButton styleClass="btn btn-primary"
-									value="Alterar" disabled="#{bikeController.bike.id == null}"
+								<h:commandButton styleClass="btn btn-primary" value="Alterar"
+									disabled="#{bikeController.bike.id == null}"
 									actionListener="#{bikeController.alterar}" />
 
 								<h:commandButton class="btn btn-danger" value="Excluir"
@@ -78,7 +92,11 @@
 
 								<h:commandButton class="btn btn-warning" value="Limpar"
 									actionListener="#{bikeController.limpar}" />
+															
 							</h:panelGrid>
+							<br/>
+							<h:commandButton value="Voltar" onclick="history.go(-1); return false;" 
+									styleClass="col-md-2 mb-3 btn btn-default form-control" />
 						</h:form>
 					</h:form>
 				</div>

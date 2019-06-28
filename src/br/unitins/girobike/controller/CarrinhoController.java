@@ -40,40 +40,30 @@ public class CarrinhoController implements Serializable {
 	}
 
 	public void finalizar() {
-		//getVenda().setCliente(getNomeCliente());	
+		getVenda().setCliente(getNomeCliente());
 		getVenda().setUsuario((Usuario) Session.getInstance().getAttribute("usuarioLogado"));
 		VendaDAO dao = new VendaDAO();
 		dao.create(getVenda());
+		// atualiza o carrinho 
+		AtualiaCarrinho();
+		Util.addMessageError("Venda realizada com sucesso!");
 	}
 	
-	private String getNomeCliente() {
-		// TODO Auto-generated method stub
+	public void AtualiaCarrinho(){
+		// atualiza o carrinho
+		List<ItemVenda> carrinho = (List<ItemVenda>) Session.getInstance().getAttribute("carrinho");
+		carrinho=null;
+		Session.getInstance().setAttribute("carrinho", carrinho);
+		
+	}
+
+	public String getNomeCliente() {
 		return nomeCliente;
 	}
 
 	public void setNomeCliente(String nomeCliente) {
 		this.nomeCliente = nomeCliente;
 	}
-	
-
-//	public void finalizar() {
-//		// verifica se existem itens na lista
-//		List<ItemVenda> carrinho = (List<ItemVenda>) Session.getInstance().getAttribute("carrinho");
-//		if (carrinho.isEmpty()) {
-//			Util.addMessageError("Carrinho sem itens");
-//			return;
-//		}
-//		System.out.println(usuario.getNome());
-//		getVenda().setCliente("Lucas");
-//		getVenda().setUsuario((Usuario) Session.getInstance().getAttribute("usuarioLogado"));
-//		VendaDAO dao = new VendaDAO();
-//		dao.create(getVenda());
-//		// atualiza o carrinho
-//		carrinho = null;
-//		Session.getInstance().setAttribute("carrinho", carrinho);
-//
-//		Util.addMessageError("Venda realizada com sucesso!");
-//	}
 
 	public Venda getVenda() {
 		if (venda == null) {

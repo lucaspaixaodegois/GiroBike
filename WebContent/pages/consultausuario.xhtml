@@ -29,7 +29,7 @@
 					
 					<h:commandButton styleClass="btn btn-success" value="Novo Usuário"
 						disabled="#{usuarioController.usuario.id != null}"
-						actionListener="#{usuarioController.incluir}">
+						actionListener="#{templateController.redirecionar('/GiroBike/faces/pages/usuario.xhtml')}">
 						<f:ajax execute="panelForm" render="@all" />
 					</h:commandButton>
 
@@ -41,7 +41,7 @@
 					<h:column>
 						<f:facet name="header">Ações</f:facet>
 						<h:commandButton class="btn btn-danger" value="Excluir"
-							actionListener="#{consultaUsuarioController.excluir}">
+							actionListener="#{consultaUsuarioController.excluir(obj.id)}">
 							<f:ajax render="@all" execute="@this" />
 						</h:commandButton>
 						<h:commandButton class="btn btn-primary" value="Editar"

@@ -19,6 +19,7 @@ public class ConsultaUsuarioController  implements Serializable {
 
 	private static final long serialVersionUID = 1646118458024979823L;
 
+	private Usuario usuario;
 	private String nome;
 	
 	private List<Usuario> listaUsuario = null;
@@ -46,6 +47,18 @@ public class ConsultaUsuarioController  implements Serializable {
 		flash.put("usuarioFlash", usuario);
 		Util.redirect("usuario.xhtml");
 	}
+	public void excluir(int id) {
+		UsuarioDAO dao = new UsuarioDAO();
+		if (dao.delete(id)) {
+			limpar();
+			// para atualizar o data table
+			listaUsuario = null;
+		}
+		dao.closeConnection();
+	}
+	public void limpar() {
+		usuario = null;
+	}
 
 	public String getNome() {
 		return nome;
@@ -53,6 +66,17 @@ public class ConsultaUsuarioController  implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	public Usuario getUsuario() {
+		if (usuario == null) {
+			usuario = new Usuario();
+		}
+		
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 }

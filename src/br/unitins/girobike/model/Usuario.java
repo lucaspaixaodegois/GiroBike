@@ -6,6 +6,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 public class Usuario {
 	private Integer id;
 
@@ -19,6 +21,7 @@ public class Usuario {
 	private String senha;
 	private Perfil perfil;
 	private LocalDate dataNascimento;
+	@CPF
 	private String cpf;
 
 	public Usuario() {
