@@ -72,7 +72,35 @@
 						</h:panelGrid>
 					</h:form>
 
-					
+					<h:form id="formDataTable" styleClass="form-horizontal">
+						<div class="md-3">
+
+							<h:dataTable value="#{produtoController.listaProduto}" var="obj"
+								styleClass="table table-striped table-hover">
+								<h:column>
+									<f:facet name="header">Id</f:facet>
+									<h:outputLabel value="#{obj.id}" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">Descrição</f:facet>
+									<h:commandLink value="#{obj.descricao}"
+										actionListener="#{produtoController.editar(obj.id)}" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">Valor</f:facet>
+									<h:outputLabel value="#{obj.valor}"
+										actionListener="#{produtoController.editar(obj.id)}">
+										<f:convertNumber locale="pt_BR" currencySymbol="R$"
+											type="currency" />
+									</h:outputLabel>
+								</h:column>
+
+							</h:dataTable>
+						</div>
+					</h:form>
+
 				</div>
 			</div>
 		</div>

@@ -5,9 +5,9 @@ import java.util.List;
 
 public enum Perfil {
 	
-	ADMINISTRADOR(1, "Administrador", Arrays.asList("usuario.xhtml","consultausuario","bike.xhtml","usuario2.xhtml", "template.xhtml", "acessonegado.xhtml", "produto.xhtml", "vendaproduto.xhtml", "carrinho.xhtml", "historico.xhtml", "detalhesvenda.xhtml")),
-	GERENTE(2, "Gerente" , Arrays.asList( "template.xhtml", "acessonegado.xhtml", "produto.xhtml", "vendaproduto.xhtml", "carrinho.xhtml", "historico.xhtml", "detalhesvenda.xhtml")),
-	FUNCIONARIO(3, "Funcionário", Arrays.asList("template.xhtml", "acessonegado.xhtml", "vendaproduto.xhtml", "carrinho.xhtml", "historico.xhtml", "detalhesvenda.xhtml"));
+	ADMINISTRADOR(1, "Administrador", Arrays.asList("usuario.xhtml","consultausuario","bike.xhtml","usuario2.xhtml", "template.xhtml", "acessonegado.xhtml", "produto.xhtml", "vendaproduto.xhtml", "carrinho.xhtml", "historico.xhtml","consultarBike.xhtml","consultarProduto.xhtml", "detalhesvenda.xhtml")),
+	GERENTE(2, "Gerente" , Arrays.asList( "template.xhtml", "consultarBike.xhtml","consultarProduto.xhtml","acessonegado.xhtml", "produto.xhtml", "vendaproduto.xhtml", "carrinho.xhtml", "historico.xhtml", "detalhesvenda.xhtml")),
+	FUNCIONARIO(3, "Funcionário", Arrays.asList("template.xhtml","consultarBike.xhtml","consultarProduto.xhtml", "acessonegado.xhtml", "vendaproduto.xhtml", "carrinho.xhtml", "historico.xhtml", "detalhesvenda.xhtml"));
 
 	private int value;
 	private String label;

@@ -16,19 +16,22 @@
 		<nav>
 			<ul>
 
-				<li><img src="logo.png" /></li>
+				<li><img src="/WebContent/resources/imagens/perfil_avatar.png" /></li>
 
 				<li><h:form>
 						<h:commandLink value="Inicio"
 							action="#{templateController.redirecionar('/GiroBike/faces/template.xhtml')}" />
 					</h:form></li>
 
+
 				<li><h:form>
 						<h:commandLink value="Cadastrar Bike"
 							action="#{templateController.redirecionar('/GiroBike/faces/pages/bike.xhtml')}" />
 					</h:form></li>
 
-				<li><h:form>
+				<li><h:form
+						rendered="#{templateController.usuarioLogado.perfil.value == 1 || templateController.usuarioLogado.perfil.value == 2}">
+
 						<h:commandLink value="Cadastrar Peça"
 							action="#{templateController.redirecionar('/GiroBike/faces/pages/produto.xhtml')}" />
 					</h:form></li>
@@ -49,11 +52,25 @@
 							action="#{templateController.redirecionar('/GiroBike/faces/pages/historico.xhtml')}" />
 					</h:form></li>
 
-				<li><h:form>
+				<li><h:form
+						rendered="#{templateController.usuarioLogado.perfil.value == 1 || templateController.usuarioLogado.perfil.value == 2}">
 
 						<h:commandLink value="Consultar Usuário"
 							action="#{templateController.redirecionar('/GiroBike/faces/pages/consultausuario.xhtml')}" />
 					</h:form></li>
+
+
+				<li><h:form>
+						<h:commandLink value="Consultar Bike"
+							action="#{templateController.redirecionar('/GiroBike/faces/pages/consultarBike.xhtml')}" />
+					</h:form></li>
+
+
+				<li><h:form>
+						<h:commandLink value="Consultar Peça"
+							action="#{templateController.redirecionar('/GiroBike/faces/pages/consultarProduto.xhtml')}" />
+					</h:form></li>
+
 				<li><h:form class="label">
 						<h:outputLabel
 							value="Olá #{templateController.usuarioLogado.nome}" />

@@ -12,85 +12,65 @@
 				<h:messages style="color:red" />
 				<h:messages id="messages" style="color:red" globalOnly="false" />
 				<div class="navbar-brand" style="width: 100%; text-align: center;">Consultar
-					Usuário</div>
+					Peça</div>
 			</div>
 			<h:form>
 				<h:panelGrid id="panelForm" columns="4">
 
-					<h:outputLabel  value="Nome: " />
+					<h:outputLabel styleClass="control-label" value="Nome: " />
 					<h:inputText styleClass="control-label"
 						value="#{consultaUsuarioController.nome}" />
-						
-						
+
+
 					<h:commandButton value="Pesquisar" class="btn btn-outline-dark"
 						actionListener="#{consultaUsuarioController.pesquisar}">
 						<f:ajax execute="panelForm" render="@all" />
 					</h:commandButton>
-					
-					<h:commandButton styleClass="btn btn-success" value="Novo Usuário"
+
+					<h:commandButton styleClass="btn btn-success" value="Nova Peça"
 						disabled="#{usuarioController.usuario.id != null}"
-						actionListener="#{templateController.redirecionar('/GiroBike/faces/pages/usuario.xhtml')}">
+						actionListener="#{templateController.redirecionar('/GiroBike/faces/pages/produto.xhtml')}">
 						<f:ajax execute="panelForm" render="@all" />
 					</h:commandButton>
-<br/><br/>
+
 				</h:panelGrid>
 
 
 				<h:dataTable class="table table-striped table-hover"
-					value="#{consultaUsuarioController.listaUsuario}" var="obj">
+					value="#{produtoController.listaProduto}" var="obj">
 					<h:column>
 						<f:facet name="header">Ações</f:facet>
 						<h:commandButton class="btn btn-danger" value="Excluir"
-							actionListener="#{consultaUsuarioController.excluir(obj.id)}">
+							actionListener="#{consultaProdutoController.excluir(obj.id)}">
 							<f:ajax render="@all" execute="@this" />
 						</h:commandButton>
 						<h:commandButton class="btn btn-primary" value="Editar"
-							actionListener="#{consultaUsuarioController.editar(obj.id)}">
+							actionListener="#{consultaProdutoController.editar(obj.id)}">
 							<f:ajax render="@form" execute="@this" />
 						</h:commandButton>
 					</h:column>
+
 					<h:column>
 						<f:facet name="header">Id</f:facet>
 						<h:outputLabel value="#{obj.id}" />
 					</h:column>
 
 					<h:column>
-						<f:facet name="header">Nome</f:facet>
-						<h:commandLink value="#{obj.nome}"
-							actionListener="#{consultaUsuarioController.editar(obj.id)}">
-							<f:ajax execute="@this" render="@form" />
-						</h:commandLink>
+						<f:facet name="header">Descrição</f:facet>
+						<h:outputLabel value="#{obj.descricao}" />
 					</h:column>
 
 					<h:column>
-						<f:facet name="header">Login</f:facet>
-						<h:commandLink value="#{obj.login}"
-							actionListener="#{consultaUsuarioController.editar(obj.id)}" />
-					</h:column>
-
-					<h:column>
-						<f:facet name="header">Senha</f:facet>
-						<h:outputLabel value="##########" />
-					</h:column>
-
-					<h:column>
-						<f:facet name="header">Data de Nascimento</f:facet>
-						<h:outputLabel value="#{obj.dataNascimento}">
-							<f:convertDateTime type="localDate" pattern="dd-MM-yyyy" />
+						<f:facet name="header">Valor</f:facet>
+						<h:outputLabel value="#{obj.valor}"
+							actionListener="#{produtoController.editar(obj.id)}">
+							<f:convertNumber locale="pt_BR" currencySymbol="R$"
+								type="currency" />
 						</h:outputLabel>
 					</h:column>
 
-					<h:column>
-						<f:facet name="header">Perfil</f:facet>
-						<h:outputLabel value="#{obj.perfil.label}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">CPF</f:facet>
-						<h:outputLabel value="#{obj.cpf}" />
-					</h:column>
 
 				</h:dataTable>
-
 			</h:form>
 		</div>
 	</ui:define>

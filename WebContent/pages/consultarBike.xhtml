@@ -12,85 +12,73 @@
 				<h:messages style="color:red" />
 				<h:messages id="messages" style="color:red" globalOnly="false" />
 				<div class="navbar-brand" style="width: 100%; text-align: center;">Consultar
-					Usuário</div>
+					Bike</div>
 			</div>
 			<h:form>
 				<h:panelGrid id="panelForm" columns="4">
 
-					<h:outputLabel  value="Nome: " />
+					<h:outputLabel styleClass="control-label" value="Nome: " />
 					<h:inputText styleClass="control-label"
-						value="#{consultaUsuarioController.nome}" />
-						
-						
+						value="#{consultaBikeController.bike.nome}" />
+
+
 					<h:commandButton value="Pesquisar" class="btn btn-outline-dark"
-						actionListener="#{consultaUsuarioController.pesquisar}">
+						actionListener="#{consultaBikeController.pesquisar}">
 						<f:ajax execute="panelForm" render="@all" />
 					</h:commandButton>
-					
-					<h:commandButton styleClass="btn btn-success" value="Novo Usuário"
-						disabled="#{usuarioController.usuario.id != null}"
-						actionListener="#{templateController.redirecionar('/GiroBike/faces/pages/usuario.xhtml')}">
+
+					<h:commandButton styleClass="btn btn-success" value="Nova Bike"
+						disabled="#{bikeController.bike.id != null}"
+						actionListener="#{templateController.redirecionar('/GiroBike/faces/pages/bike.xhtml')}">
 						<f:ajax execute="panelForm" render="@all" />
 					</h:commandButton>
-<br/><br/>
+
 				</h:panelGrid>
 
 
 				<h:dataTable class="table table-striped table-hover"
-					value="#{consultaUsuarioController.listaUsuario}" var="obj">
+					value="#{consultaBikeController.listaBike}" var="obj">
 					<h:column>
 						<f:facet name="header">Ações</f:facet>
 						<h:commandButton class="btn btn-danger" value="Excluir"
-							actionListener="#{consultaUsuarioController.excluir(obj.id)}">
+							actionListener="#{consultaBikeController.excluir(obj.id)}">
 							<f:ajax render="@all" execute="@this" />
 						</h:commandButton>
 						<h:commandButton class="btn btn-primary" value="Editar"
-							actionListener="#{consultaUsuarioController.editar(obj.id)}">
+							actionListener="#{consultaBikeController.editar(obj.id)}">
 							<f:ajax render="@form" execute="@this" />
 						</h:commandButton>
 					</h:column>
+
 					<h:column>
 						<f:facet name="header">Id</f:facet>
 						<h:outputLabel value="#{obj.id}" />
 					</h:column>
 
 					<h:column>
-						<f:facet name="header">Nome</f:facet>
-						<h:commandLink value="#{obj.nome}"
-							actionListener="#{consultaUsuarioController.editar(obj.id)}">
-							<f:ajax execute="@this" render="@form" />
-						</h:commandLink>
+						<f:facet name="header">Marca</f:facet>
+						<h:outputLabel value="#{obj.marca}" />
 					</h:column>
 
-					<h:column>
-						<f:facet name="header">Login</f:facet>
-						<h:commandLink value="#{obj.login}"
-							actionListener="#{consultaUsuarioController.editar(obj.id)}" />
-					</h:column>
 
 					<h:column>
-						<f:facet name="header">Senha</f:facet>
-						<h:outputLabel value="##########" />
+						<f:facet name="header">Categoria</f:facet>
+						<h:outputLabel value="#{obj.categoria}" />
 					</h:column>
-
 					<h:column>
-						<f:facet name="header">Data de Nascimento</f:facet>
-						<h:outputLabel value="#{obj.dataNascimento}">
-							<f:convertDateTime type="localDate" pattern="dd-MM-yyyy" />
-						</h:outputLabel>
+						<f:facet name="header">Modelo</f:facet>
+						<h:outputLabel value="#{obj.modelo}" />
 					</h:column>
-
 					<h:column>
-						<f:facet name="header">Perfil</f:facet>
-						<h:outputLabel value="#{obj.perfil.label}" />
+						<f:facet name="header">Categoria</f:facet>
+						<h:outputLabel value="#{obj.tamanhoAro}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">CPF</f:facet>
 						<h:outputLabel value="#{obj.cpf}" />
+
 					</h:column>
-
 				</h:dataTable>
-
 			</h:form>
 		</div>
 	</ui:define>

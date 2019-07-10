@@ -40,21 +40,23 @@ public class CarrinhoController implements Serializable {
 	}
 
 	public void finalizar() {
+
 		getVenda().setCliente(getNomeCliente());
 		getVenda().setUsuario((Usuario) Session.getInstance().getAttribute("usuarioLogado"));
 		VendaDAO dao = new VendaDAO();
 		dao.create(getVenda());
-		// atualiza o carrinho 
+		// atualiza o carrinho
 		AtualiaCarrinho();
 		Util.addMessageError("Venda realizada com sucesso!");
+
 	}
-	
-	public void AtualiaCarrinho(){
+
+	public void AtualiaCarrinho() {
 		// atualiza o carrinho
 		List<ItemVenda> carrinho = (List<ItemVenda>) Session.getInstance().getAttribute("carrinho");
-		carrinho=null;
+		carrinho = null;
 		Session.getInstance().setAttribute("carrinho", carrinho);
-		
+
 	}
 
 	public String getNomeCliente() {

@@ -39,6 +39,7 @@ public class VendaProdutoController  implements Serializable {
 		listaProduto = null;
 	}
 	
+
 	public void adicionar(int id) {
 		// pesquisa o produto selecionado
 		ProdutoDAO dao = new ProdutoDAO();

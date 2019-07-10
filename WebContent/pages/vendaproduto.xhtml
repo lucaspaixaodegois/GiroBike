@@ -9,8 +9,6 @@
 		<div class="container">
 
 			<div class="navbar navbar-inverse">
-				<h:messages style="color:red" />
-				<h:messages id="messages" style="color:red" globalOnly="false" />
 				<div class="navbar-brand" style="width: 100%; text-align: center;">Realizar
 					Venda</div>
 			</div>
@@ -52,10 +50,9 @@
 							actionListener="#{vendaProdutoController.adicionar(obj.id)}">
 							<f:ajax render="@all" execute="@this" />
 						</h:commandButton>
-			
 					</h:column>
-
 				</h:dataTable>
+				<h:messages style="color:red" />
 
 			</h:form>
 		</div>
